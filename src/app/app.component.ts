@@ -5,6 +5,17 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'angular-crash-todolist';
+export class AppComponent 
+{
+  name:string = 'Sean';
+
+  constructor()
+  {
+    this.changeName('John');
+  }
+
+  changeName(name:string):void
+  {
+    this.name = name;
+  }
 }
