@@ -20,13 +20,11 @@ export class TodoService
   todosUrl:string = 'https://jsonplaceholder.typicode.com/todos';
   todosLimit:string = '?_limit=5';
 
-  // Get Todos
   getTodos():Observable<Todo[]>
   {
     return this.http.get<Todo[]>(`${this.todosUrl}${this.todosLimit}`);
   }
 
-  // Toggle Completed
   toggleCompletedField(todo:Todo):Observable<Todo>
   {
     return this.http.put<Todo>(`${this.todosUrl}/${todo.id}`, todo, httpOptions);
@@ -35,5 +33,10 @@ export class TodoService
   deleteTodo(todo:Todo):void
   {
     this.http.delete<Todo>(`${this.todosUrl}/${todo.id}`, httpOptions);
+  }
+
+  addTodo(todo:Todo):Observable<Todo>
+  {
+    return this.http.post<Todo>(this.todosUrl, todo, httpOptions);
   }
 }
